@@ -1,0 +1,16 @@
+= form_with model: current_user,url: mypages_path,  local: true do |f|
+
+  p name
+  = current_user.name
+  br
+  = current_user.valid_password?("newpass")
+  br
+  = f.text_field :name, placeholder: "name"
+
+  = f.password_field :current_password, placeholder: "current_password"
+
+  = f.password_field :password, placeholder: "password"
+
+  = f.password_field :password_confirmation, placeholder: "password_confirm"
+
+  = f.submit
