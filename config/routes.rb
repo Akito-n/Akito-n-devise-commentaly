@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    confirmations: 'users/confirmations'
   }
+
+  devise_scope :user do
+    patch 'users/confirmation', to: 'users/confirmations#confirm'
+  end
+
   root to: 'home#index'
   get 'home/index'
   resource :mypages

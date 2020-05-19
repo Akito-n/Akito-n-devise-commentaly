@@ -1,0 +1,21 @@
+h2
+  | 本登録するためにパスワードを設定してください。
+= form_for(resource, as: resource_name, url: users_confirmation_path, html: { method: :patch }) do |f|
+  = render "devise/shared/error_messages", resource: resource
+  = hidden_field_tag :confirmation_token, params[:confirmation_token]
+  .field
+    = f.label :password
+    br
+    = f.password_field :password
+    - if @minimum_password_length
+      br
+      em
+        = @minimum_password_length
+        |  characters minimum
+  .field
+    = f.label :password_confirmation
+    br
+    = f.password_field :password_confirmation
+  .field
+  .actions
+    = f.submit "Resend confirmation instructions"
